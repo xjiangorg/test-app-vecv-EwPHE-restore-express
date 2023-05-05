@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: test-component-dkfd
+  namespace: build-e2e-hwgw-tenant
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images@sha256:cd96a953407ee9cc7c67e1143f632407eb4cf3059610ee4baf8419165494563e
+        name: my-python
+        resources: {}
+status: {}
