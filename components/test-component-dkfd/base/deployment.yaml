@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-component-dkfd
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-component-dkfd
+    app.kubernetes.io/part-of: test-app-vecv
+  name: test-component-dkfd
+  namespace: build-e2e-hwgw-tenant
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: python-app
+      app.kubernetes.io/instance: test-component-dkfd
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: python-app
+        app.kubernetes.io/instance: test-component-dkfd
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images:f15c0e34a5864b2fad5b16e5d9f840cd
+        name: my-python
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
